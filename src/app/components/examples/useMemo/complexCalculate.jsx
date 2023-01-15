@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CardWrapper from "../../common/Card";
 import SmallTitle from "../../common/typografy/smallTitle";
 import Divider from "../../common/divider";
@@ -9,8 +9,11 @@ const factorial = (n) => {
 
 const ComplexCalculateExample = () => {
     const [value, setValue] = useState(100);
-
+    const [color, setColor] = useState("primary");
     const fact = factorial(value);
+    useEffect(() => {
+        console.log("render");
+    });
     return (
         <>
             <CardWrapper>
@@ -27,6 +30,10 @@ const ComplexCalculateExample = () => {
             </CardWrapper>
             <CardWrapper>
                 <SmallTitle>Зависимость от сторонних setState</SmallTitle>
+                <button
+                    className={`btn btn-${color}`}
+                    onClick={() => { setColor((prevState) => prevState === "primary" ? "secondary" : "primary"); }}
+                >change color button</button>
             </CardWrapper>
         </>
     );
