@@ -1,12 +1,32 @@
-import React from "react";
+import React, { useRef } from "react";
 import CardWrapper from "../../common/Card";
 import SmallTitle from "../../common/typografy/smallTitle";
+import Divider from "../../common/divider";
 const ProgrammableActionsExample = () => {
+    const inputRef = useRef();
+    const handelClick = (e) => {
+        e.preventDefault();
+        console.log(inputRef.current);
+        inputRef.current.focus();
+    };
+    const handelClickColor = (e) => {
+        e.preventDefault();
+        console.log(inputRef.current);
+        inputRef.current.style.background = inputRef.current.style.background ? "" : "red";
+        console.log(inputRef.current.style);
+    };
     return (
         <CardWrapper>
             <SmallTitle className="card-title">
-                Программируемые действия и свойства
+                Programmable actions and properties
             </SmallTitle>
+            <Divider/>
+            <form>
+                <label htmlFor="email" className="form-label">Email</label>
+                <input ref={inputRef} type="text" id="email" className="form-control"/>
+                    <button className={"btn btn-outline-secondary m-1"} onClick={handelClick}>Focus</button>
+                    <button className={"btn btn-outline-primary m-1"} onClick={handelClickColor}>Change color</button>
+            </form>
         </CardWrapper>
     );
 };
