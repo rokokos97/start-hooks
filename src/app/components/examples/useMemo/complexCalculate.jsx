@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import CardWrapper from "../../common/Card";
 import SmallTitle from "../../common/typografy/smallTitle";
 import Divider from "../../common/divider";
@@ -6,11 +6,14 @@ import Divider from "../../common/divider";
 const factorial = (n) => {
     return n ? n * factorial(n - 1) : 1;
 };
-
+const runFactorial = (n) => {
+    console.log("run factorial");
+    return factorial(n);
+};
 const ComplexCalculateExample = () => {
     const [value, setValue] = useState(100);
     const [color, setColor] = useState("primary");
-    const fact = factorial(value);
+    const fact = useMemo(() => runFactorial(value), [value]);
     useEffect(() => {
         console.log("render");
     });
