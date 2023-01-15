@@ -9,11 +9,14 @@ const ProgrammableActionsExample = () => {
         console.log(inputRef.current);
         inputRef.current.focus();
     };
-    const handelClickColor = (e) => {
-        e.preventDefault();
+    const handelClickColor = () => {
         console.log(inputRef.current);
         inputRef.current.style.background = inputRef.current.style.background ? "" : "red";
         console.log(inputRef.current.style);
+    };
+    const handelClickWidth = () => {
+        console.log(inputRef.current);
+        inputRef.current.style.width = "50%";
     };
     return (
         <CardWrapper>
@@ -21,12 +24,11 @@ const ProgrammableActionsExample = () => {
                 Programmable actions and properties
             </SmallTitle>
             <Divider/>
-            <form>
                 <label htmlFor="email" className="form-label">Email</label>
                 <input ref={inputRef} type="text" id="email" className="form-control"/>
-                    <button className={"btn btn-outline-secondary m-1"} onClick={handelClick}>Focus</button>
-                    <button className={"btn btn-outline-primary m-1"} onClick={handelClickColor}>Change color</button>
-            </form>
+                <button className={"btn btn-outline-secondary m-1"} onClick={handelClick}>Focus</button>
+                <button className={"btn btn-outline-primary m-1"} onClick={handelClickColor}>Change color</button>
+                <button className={"btn btn-outline-primary m-1"} onClick={handelClickWidth}>Change width</button>
         </CardWrapper>
     );
 };
