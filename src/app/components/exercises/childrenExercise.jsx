@@ -26,7 +26,10 @@ const ComponentsList = ({ children }) => {
     console.log("childrenArray", childrenArray);
     return React.Children.map(childrenArray, (child) => {
         console.log("child.key", child.key);
-        return React.cloneElement(child, { ...child.props, num: +child.key.replace(".", "") + 1 });
+        return React.cloneElement(child, {
+            ...child.props,
+            num: +child.key.replace(".", "") + 1
+        });
     });
 };
 ComponentsList.propTypes = {
