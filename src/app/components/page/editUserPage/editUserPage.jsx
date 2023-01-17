@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { validator } from "../../../utils/validator";
 import api from "../../../api";
 import { TextField, SelectField } from "../../common/form";
 
