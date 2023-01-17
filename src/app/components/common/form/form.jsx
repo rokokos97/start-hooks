@@ -7,8 +7,14 @@ const FormComponent = ({ children, validatorConfig }) => {
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
-        validate();
+        if (Object.keys(data).length > 0) {
+            validate();
+            console.log("call validate");
+        }
     }, [data]);
+    useEffect(() => {
+        console.log(errors);
+    }, [errors]);
     const handleChange = (target) => {
         setData((prevState) => ({
             ...prevState,
@@ -18,6 +24,7 @@ const FormComponent = ({ children, validatorConfig }) => {
     const isValid = Object.keys(errors).length === 0;
     const validate = () => {
         const errors = validator(data, validatorConfig);
+        console.log(errors);
         setErrors(errors);
         return Object.keys(errors).length === 0;
     };
